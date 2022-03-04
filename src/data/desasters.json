@@ -1,0 +1,34 @@
+[
+    {
+        "id": 0,
+        "name": "Zumbis",
+        "armor": 5,
+        "attack": 3,
+        "uv_protection": 0,
+        "freshness": 0
+    },
+    {
+        "id": 1,
+        "name": "Nuclear Attacks",
+        "armor": 3,
+        "attack": 0,
+        "uv_protection": 5,
+        "freshness": 0
+    },
+    {
+        "id": 2,
+        "name": "Assaulters",
+        "armor": 4,
+        "attack": 4,
+        "uv_protection": 0,
+        "freshness": 0
+    },
+    {
+        "id": 3,
+        "name": "Global Warming",
+        "armor": 0,
+        "attack": 0,
+        "uv_protection": 5,
+        "freshness": 5
+    }
+]
