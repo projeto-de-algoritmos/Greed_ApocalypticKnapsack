@@ -1,0 +1,92 @@
+[
+    {
+        "id": 0,
+        "name": "Knife",
+        "weight": 1,
+        "armor": 0,
+        "attack": 2,
+        "uv_protection": 0,
+        "freshness": 0
+    },
+    {
+        "id": 1,
+        "name": "Crossbow",
+        "weight": 3,
+        "armor": 0,
+        "attack": 3,
+        "uv_protection": 0,
+        "freshness": 0
+    },
+    {
+        "id": 2,
+        "name": "Fire Gun",
+        "weight": 5,
+        "armor": 0,
+        "attack": 5,
+        "uv_protection": 0,
+        "freshness": 0
+    },
+    {
+        "id": 3,
+        "name": "Helmet",
+        "weight": 2,
+        "armor": 3,
+        "attack": 0,
+        "uv_protection": 1,
+        "freshness": 0
+    },
+    {
+        "id": 4,
+        "name": "Ballistic Vest",
+        "weight": 3,
+        "armor": 4,
+        "attack": 0,
+        "uv_protection": 2,
+        "freshness": 0
+    },
+    {
+        "id": 5,
+        "name": "Sunscreen",
+        "weight": 1,
+        "armor": 0,
+        "attack": 0,
+        "uv_protection": 3,
+        "freshness": 1
+    },
+    {
+        "id": 6,
+        "name": "Umbrella",
+        "weight": 2,
+        "armor": 0,
+        "attack": 1,
+        "uv_protection": 3,
+        "freshness": 3
+    },
+    {
+        "id": 7,
+        "name": "Radiation Suit",
+        "weight": 4,
+        "armor": 1,
+        "attack": 0,
+        "uv_protection": 5,
+        "freshness": 0
+    },
+    {
+        "id": 8,
+        "name": "Tree Seedling",
+        "weight": 2,
+        "armor": 0,
+        "attack": 0,
+        "uv_protection": 3,
+        "freshness": 4
+    },
+    {
+        "id": 9,
+        "name": "Caipirinha",
+        "weight": 1,
+        "armor": 0,
+        "attack": 0,
+        "uv_protection": 0,
+        "freshness": 5
+    }
+]
