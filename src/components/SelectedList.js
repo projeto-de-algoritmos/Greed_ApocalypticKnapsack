@@ -33,7 +33,7 @@ export default function SelectedList(props) {
         if (weights === props.bagCapacity)
             props.callbackWeight(true)
 
-        return ${itemDurability}
+        return itemDurability
     }
 
     const selectedItems = (items) => {
