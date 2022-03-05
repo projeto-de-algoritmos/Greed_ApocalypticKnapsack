@@ -1,10 +1,10 @@
 const options = require("../data/desasters.json");
 const items = require("../data/items.json");
 
-const knapSack = (selected_options, bagCapacity) => {
+export const knapSack = (selectedDesasters, bagCapacity) => {
   let weight = 0, itemIndex = 0, solution = [];
 
-  let orderedItems = orderByPriority(selected_options);
+  let orderedItems = orderByPriority(selectedDesasters);
 
   while (bagCapacity > weight) {
     let currentItem = orderedItems[itemIndex++];
@@ -19,14 +19,14 @@ const knapSack = (selected_options, bagCapacity) => {
   return solution
 };
 
-function calculateWeights(selected_options) {
+function calculateWeights(selectedDesasters) {
   let weights = {
     armor: 0,
     attack: 0,
     uv_protection: 0,
     freshness: 0,
   };
-  selected_options.forEach((optionIndex) => {
+  selectedDesasters.forEach((optionIndex) => {
     // console.log(options[optionIndex].name);
     weights["armor"] += options[optionIndex].armor;
     weights["attack"] += options[optionIndex].attack;
@@ -37,10 +37,10 @@ function calculateWeights(selected_options) {
   return weights;
 }
 
-function orderByPriority(selected_options) {
+function orderByPriority(selectedDesasters) {
   let weighted_items = items.slice()
 
-  let weights = calculateWeights(selected_options);
+  let weights = calculateWeights(selectedDesasters);
 
   weighted_items.forEach((item) => {
     item["armor"] *= weights["armor"];
