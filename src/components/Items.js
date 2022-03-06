@@ -3,8 +3,6 @@ import Box from '@mui/material/Box';
 import Grid from "@mui/material/Grid";
 import CustomizedCard from "../components/Card";
 
-
-
 export default function Items(props) {
     const items = require("../data/items.json");
 
@@ -26,7 +24,8 @@ export default function Items(props) {
         return items.map(item => (
             <Grid
                 item
-                xs={4}
+                xs={2}
+                md={4}
             >
                 <CustomizedCard item={item} onClick={handleClick}  isSelected={props.selectedItems.indexOf(item.name) !== -1 ? true : false} />
             </Grid >
