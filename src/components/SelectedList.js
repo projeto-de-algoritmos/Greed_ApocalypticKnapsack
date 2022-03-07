@@ -5,37 +5,19 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import {ptBR} from '../utils/ptBR.js'
+import { ptBR } from '../utils/ptBR.js'
 
 export default function SelectedList(props) {
-    const defaultItems = require("../data/items.json");
-    var weights = 0
-
-    function calculateRemainingWeight(item) {
-        const newWeight = defaultItems.find((el) => el.name === item).weight
-        let itemDurability = 100;
-
-        if (weights + newWeight > props.bagCapacity) {
-            itemDurability = ((props.bagCapacity - weights) / newWeight) * 100;
-            weights = props.bagCapacity
-        } else
-            weights += newWeight
-
-        if (weights === props.bagCapacity)
-            props.callbackWeight(true)
-
-        return itemDurability
-    }
 
     const selectedItems = (items) => {
         return items.map(item => (
             <ListItem>
                 <ListItemAvatar>
-                    <Avatar src={require('../assets/imagens/' + item.toLowerCase() + '.png')} />
+                    <Avatar src={require('../assets/imagens/' + item.name.toLowerCase() + '.png')} />
                 </ListItemAvatar>
                 <ListItemText
-                    primary={ptBR[item]}
-                    secondary={parseFloat(calculateRemainingWeight(item)).toFixed(2) + "%"}
+                    primary={ptBR[item.name]}
+                    secondary={item.durability}
                 />
             </ListItem>
         ))

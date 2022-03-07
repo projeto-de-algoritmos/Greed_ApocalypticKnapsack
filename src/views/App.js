@@ -8,6 +8,7 @@ import BagSelector from "../components/BagSelector";
 import CustomizedButton from "../components/Button";
 import ResultDialog from "../components/resultDialog";
 import { knapSack } from "../utils/knapsack";
+import {ptBR} from '../utils/ptBR.js'
 import "./App.css";
 
 function App() {
@@ -30,8 +31,10 @@ function App() {
     return answer
   }
   const handleSubmitClick = () => {
-    const result = knapSack(choosedDesasters, bagCapacity).map((el) => el.item)
-    if (equals(selectedItems, result)) setResultContent("Parabéns, você sobreviveu!!")
+    const result = knapSack(choosedDesasters, bagCapacity).map((el) => `${ptBR[el.item]} (${parseFloat(el.durability).toFixed(2)}%)`)
+    const formattedSelectedItems = selectedItems.map((el) => `${ptBR[el.name]} (${el.durability})`)
+
+    if (equals(result, formattedSelectedItems)) setResultContent("Parabéns, você sobreviveu!!")
     else setResultContent(`Infelizmente você não fez a melhor escolha. Os melhores equipamentos seriam:\n${answerFormat(result)}`)
     setIsOpenDialog(true)
   }
@@ -55,13 +58,13 @@ function App() {
         </Grid>
         <Grid item xs={4} sm={8} md={6}>
           <Box sx={{ height: "100vh" }}>
-            <Items selectedItems={selectedItems} isFull={isFull} callbackWeight={(isFull) => { setIsFull(isFull) }} callback={(selectedItems) => { setSelectedItems(selectedItems) }} />
+            <Items selectedItems={selectedItems} bagCapacity={bagCapacity} isFull={isFull} callbackWeight={(isFull) => { setIsFull(isFull) }} callback={(selectedItems) => { setSelectedItems(selectedItems) }} />
             <ResultDialog content={resultContent} openDialog={isOpenDialog} callbackOpenDialog={(value) => setIsOpenDialog(value)} />
           </Box>
         </Grid>
         <Grid item xs sm md>
           <Box m={5} sx={{ height: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between" }}>
-            <SelectedList selectedItems={selectedItems} isFull={isFull} callbackWeight={(isFull) => { setIsFull(isFull) }} callback={(selectedItems) => { setSelectedItems(selectedItems) }} bagCapacity={bagCapacity} />
+            <SelectedList selectedItems={selectedItems} />
             <CustomizedButton onClick={handleSubmitClick}>Resultado da sobrevivência</CustomizedButton>
           </Box>
         </Grid>

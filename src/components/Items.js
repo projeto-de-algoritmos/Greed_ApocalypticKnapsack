@@ -7,24 +7,69 @@ import { Typography } from '@mui/material';
 export default function Items(props) {
     const items = require("../data/items.json");
     const [errorMessage, setErrorMessage] = React.useState("")
+    var weights = calculateTotalWeight()
 
     React.useEffect(() => {
         if(!props.isFull) setErrorMessage("")
     }, [props.isFull])
 
+    function calculateTotalWeight(){
+        let totalWeights = 0
+
+        props.selectedItems.map(selectedEl => {
+            totalWeights += items.find(el => el.name === selectedEl.name).weight
+        })
+
+        return totalWeights
+    }
+
+    function calculateRemainingWeight(arr, item) {
+        const newWeight = items.find((el) => el.name === item).weight
+        let itemDurability = 100;
+
+        if (weights + newWeight > props.bagCapacity) {
+            itemDurability = ((props.bagCapacity - weights) / newWeight) * 100;
+            weights = props.bagCapacity
+        } else
+            weights += newWeight
+
+        if (weights === props.bagCapacity)
+            props.callbackWeight(true)
+
+        return [...arr, {name: item, durability: parseFloat(itemDurability).toFixed(2) + "%"}]
+    }
+
+    function calculateIsFull(selectedItems){
+        let sumWeight = 0
+
+        selectedItems.map(seletedEl => {
+            sumWeight += items.find((el) => el.name === seletedEl.name).weight
+        })
+
+        return sumWeight >= props.bagCapacity
+    }
+
     const handleClick = (e) => {
-        const index = props.selectedItems.indexOf(e.target.alt)
+        const index = props.selectedItems.indexOf(props.selectedItems.find(el => e.target.alt === el.name))
 
         if (index === -1 && !props.isFull) {
-            props.callback([...props.selectedItems, e.target.alt])
+            props.callback(calculateRemainingWeight(props.selectedItems, e.target.alt))
             setErrorMessage("")
         }
         else if (index !== -1) {
-            console.log(props.selectedItems[index])
+            let newSelectedItems = []
             let oldSelectedItems = [...props.selectedItems]
             oldSelectedItems.splice(index, 1)
-            props.callback(oldSelectedItems)
-            props.callbackWeight(false)
+
+            weights = 0;
+            oldSelectedItems.map(el => {
+                newSelectedItems = calculateRemainingWeight(newSelectedItems, el.name)
+            })
+
+            console.log(newSelectedItems)
+            props.callback(newSelectedItems)
+            props.callbackWeight(calculateIsFull(newSelectedItems))
+
             setErrorMessage("")
         }
         else{
@@ -39,7 +84,7 @@ export default function Items(props) {
                 xs={2}
                 md={4}
             >
-                <CustomizedCard item={item} onClick={handleClick} isSelected={props.selectedItems.indexOf(item.name) !== -1 ? true : false} />
+                <CustomizedCard item={item} onClick={handleClick} isSelected={props.selectedItems.find(el => item.name === el.name) ? true : false} />
             </Grid >
         ))
     }

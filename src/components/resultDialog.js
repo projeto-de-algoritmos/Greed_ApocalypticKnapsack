@@ -20,6 +20,7 @@ export default function ResultDialog(props) {
         <Dialog
             fullScreen={fullScreen}
             open={props.openDialog}
+            fullWidth
             sx={{minWidth: "50%", minHeight:"50%", alignItems: "center", justifyContent: "center" }}>
             <DialogTitle>
                 {"Resultado Final"}
