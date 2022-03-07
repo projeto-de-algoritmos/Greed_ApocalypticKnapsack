@@ -31,7 +31,7 @@ function App() {
   }
   const handleSubmitClick = () => {
     const result = knapSack(choosedDesasters, bagCapacity).map((el) => el.item)
-    if (equals(selectedItems, result)) setResultContent("Parabéns, vocês Sobreviveu!!")
+    if (equals(selectedItems, result)) setResultContent("Parabéns, você sobreviveu!!")
     else setResultContent(`Infelizmente você não fez a melhor escolha. Os melhores equipamentos seriam:\n${answerFormat(result)}`)
     setIsOpenDialog(true)
   }

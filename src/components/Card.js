@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import { blueGrey, green } from '@mui/material/colors';
+import {ptBR} from '../utils/ptBR.js'
 
 const CustomCard = styled(Card)(() => ({
     'img:hover': {
@@ -22,22 +23,22 @@ export default function CustomizedCard(props) {
         <Box sx={{ position: 'absolute', display: 'flex', flexDirection: 'column', minWidth: 175, backgroundColor: bgColor }}>
             <CardContent sx={{ flex: '1 0 auto' }}>
                 <Typography component="div" variant="h6">
-                    {props.item.name}
+                    {ptBR[props.item.name]}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary" component="div">
-                    Weight: {props.item.weight}
+                    Peso: {props.item.weight}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary" component="div">
-                    Armor: {props.item.armor}
+                    Armadura: {props.item.armor}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary" component="div">
-                    Attack: {props.item.attack}
+                    Ataque: {props.item.attack}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary" component="div">
-                    UV Protection: {props.item.uv_protection}
+                    Proteção UV: {props.item.uv_protection}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary" component="div">
-                    Freshness: {props.item.freshness}
+                    Refrescância: {props.item.freshness}
                 </Typography>
             </CardContent>
         </Box>

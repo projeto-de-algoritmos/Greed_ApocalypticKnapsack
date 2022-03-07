@@ -22,7 +22,7 @@ export default function ResultDialog(props) {
             open={props.openDialog}
             sx={{minWidth: "50%", minHeight:"50%", alignItems: "center", justifyContent: "center" }}>
             <DialogTitle>
-                {"Final Result"}
+                {"Resultado Final"}
             </DialogTitle>
             <DialogContent>
                 <DialogContentText>
@@ -31,7 +31,7 @@ export default function ResultDialog(props) {
             </DialogContent>
             <DialogActions>
                 <Button autoFocus onClick={handleOnClose}>
-                    Ok, Got it!
+                    Ok, Entendi!
                 </Button>
             </DialogActions>
         </Dialog>
