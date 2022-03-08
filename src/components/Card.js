@@ -22,7 +22,7 @@ export default function CustomizedCard(props) {
     return <CustomCard {...props} sx={{ width: "fit-content" }}>
         <Box sx={{ position: 'absolute', display: 'flex', flexDirection: 'column', minWidth: 175, backgroundColor: bgColor }}>
             <CardContent sx={{ flex: '1 0 auto' }}>
-                <Typography component="div" variant="h6">
+                <Typography component="div" variant="button">
                     {ptBR[props.item.name]}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary" component="div">
