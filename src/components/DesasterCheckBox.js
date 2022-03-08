@@ -30,8 +30,6 @@ export default function DesasterCheckbox(props) {
     setChecked([checked[0], checked[1], checked[2], event.target.checked]);
   };
 
-  const error = checked.filter((v) => v === true).length === 0;
-
   return (
     <Box sx={{
       height: "100%",
@@ -40,13 +38,11 @@ export default function DesasterCheckbox(props) {
       alignItems: "center",
     }}>
       <FormControl
-        required
-        error={error}
         component="fieldset"
         sx={{ m: 2, alignItems: "center", textAlign: "center" }}
         variant="standard"
       >
-        <FormLabel component="legend" sx={{ maxWidth: "95%", height: "auto", alignSelf: "center" }}>Selecione um ou mais desastres pós-apocalípticos</FormLabel>
+        <FormLabel component="legend" sx={{ maxWidth: "95%", height: "auto", alignSelf: "center" }}>Selecione os possíveis desastres pós-apocalípticos</FormLabel>
         <FormGroup>
           <FormControlLabel
             control={

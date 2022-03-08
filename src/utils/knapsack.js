@@ -38,7 +38,11 @@ function calculateWeights(selectedDesasters) {
 }
 
 function orderByPriority(selectedDesasters) {
-  let weighted_items = items.slice()
+  let weighted_items = []
+  items.forEach((v, i) => {
+    const value = Object.assign({}, v);
+    weighted_items.push(value);
+  });
 
   let weights = calculateWeights(selectedDesasters);
 
